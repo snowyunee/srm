@@ -1,4 +1,4 @@
-Enter file contents here-- | Main entry point to the application.
+-- | Main entry point to the application.
 module Main where
  
 -- target_t => [String]
