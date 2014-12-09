@@ -1,5 +1,5 @@
 -- | Main entry point to the application.
-module Srm633Div2Lev1 where
+module Srm633Div2Lev2 where
  
 import Data.List   
  
