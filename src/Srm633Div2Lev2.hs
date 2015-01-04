@@ -1,14 +1,14 @@
 -- | Main entry point to the application.
-module Srm633Div2Lev2 where
+module Srm629Div2Lev1 where
  
 import Data.List   
  
-able_to_get x y len =
+RectangleCoveringEasy hx hw bh bw =
     let
         sum = Data.List.sum len
         max = maximum len
         distance = sqrt (x*x + y*y)
-    in
+    in_h
         if sum >= distance &&
            max <= sum - max + distance then "Able"
         else
