@@ -3,8 +3,15 @@
 
 module Srm629Div2Lev2 where
  
+diff d acc (vi,wi,di)  = acc + abs (wi - (d * vi))
+
+diff_sum l = [foldl (diff d) 0 l| (_,_,d) <- l]
+
 findsuitableDensity containerVolumns desiredWeight
-    = 1
+    = minimum $
+      diff_sum $
+      [(v,w,w/v) | (v,w) <- zip containerVolumns desiredWeight]
+
    
 -- | The main entry point.
 main :: IO ()
