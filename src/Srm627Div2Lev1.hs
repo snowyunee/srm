@@ -1,17 +1,17 @@
 import qualified Data.Map as Map
 
-count_rect :: Integral a => Map.Map k a -> a
-count_rect m =
+countRect :: Integral a => Map.Map k a -> a
+countRect m =
     Map.foldl (\acc v -> acc + (quot v 4)) 0 m
 
 updateMap :: (Integral a, Ord k) => Map.Map k a -> k -> Map.Map k a
 updateMap m k =
-    Map.insertWith (\new_v old_v -> new_v + old_v) k 1 m
+    Map.insertWith (+) k 1 m
 
-howManySquares l =
+howManySquares ls =
     last $
-    map count_rect $
-    scanl updateMap Map.empty l
+    map countRect $
+    scanl updateMap Map.empty ls
    
 
 -- | The main entry point.
