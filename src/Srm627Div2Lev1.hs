@@ -4,17 +4,17 @@ countRect :: Integral a => Map.Map k a -> a
 countRect m =
     Map.foldl (\acc v -> acc + (quot v 4)) 0 m
 
+
 updateMap :: (Ord k, Integral a) => k -> Map.Map k a -> Map.Map k a
 updateMap k =
     Map.insertWith (+) k 1
+
 
 howManySquares :: (Ord a, Integral b) => [a] -> b
 howManySquares ls =
     last $
     map countRect $
-    scanl updateMap' Map.empty ls
-    where
-        updateMap' m k = updateMap k m
+    scanl (\m k -> updateMap k m) Map.empty ls
    
 
 -- | The main entry point.

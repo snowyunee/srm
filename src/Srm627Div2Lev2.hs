@@ -7,15 +7,21 @@ import Data.Tuple
 f :: (Integral a, Ord k) => (Map.Map k a, k, a) -> k -> (Map.Map k a, k, a)
 f (m,max_char,max_count) char = (m',max_char',max_count')
     where
-     (max_char',max_count') = if (cur_count > max_count) then (char,cur_count) else (max_char,max_count)
-     cur_count | isJust old_count = fromJust old_count + 1
-               | otherwise = 1
-     (old_count,m') = Map.insertLookupWithKey updateMap char 1 m
-     updateMap = (\_ new_count old_count -> old_count + new_count)
+        (max_char', max_count')
+            | cur_count > max_count = (char,cur_count)
+            | otherwise             = (max_char,max_count)
+        cur_count
+            | isJust old_count = fromJust old_count + 1
+            | otherwise        = 1
+        (old_count, m') = Map.insertLookupWithKey updateMap char 1 m
+        updateMap = (\_ new_count old_count -> old_count + new_count)
+
 
 happyLetter :: Integral n => n -> Char -> n -> Char
-happyLetter total_count char count | total_count < (2 * count) = char
-                                   | otherwise = '.'
+happyLetter total_count char count
+    | total_count < (2 * count) = char
+    | otherwise = '.'
+
 
 getHappyLetter :: String -> Char
 getHappyLetter ls =
