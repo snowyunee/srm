@@ -1,8 +1,7 @@
 
---getExceptions :: Integral a => a -> a -> Double
+getExceptions :: Integral a => a -> a -> Double
 getExceptions a b  =
-    --(\ls -> (fromIntegral (sum ls)) / (fromIntegral (length ls))) $
-    fromIntegral.length $
+    (\ls -> (fromIntegral (sum ls)) / (fromIntegral (length ls))) $
     [x| x <- [1,2..a], y <- [1,2..b], x > y]
    
 
