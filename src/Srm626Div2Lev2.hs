@@ -1,7 +1,7 @@
 
 getExceptions :: (Integral a, Fractional b) => a -> a -> b
 getExceptions a b  =
-    (\ls -> sum ls / fromIntegral (length ls)) $
+    (\ls -> fromIntegral (sum ls) / fromIntegral (length ls)) $
     [x| x <- [1..a], y <- [1..b], x > y]
    
 
