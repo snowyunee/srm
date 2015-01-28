@@ -1,8 +1,8 @@
 
-getExceptions :: Integral a => a -> a -> Double
+getExceptions :: (Integral a, Fractional b) => a -> a -> b
 getExceptions a b  =
-    (\ls -> (fromIntegral (sum ls)) / (fromIntegral (length ls))) $
-    [x| x <- [1,2..a], y <- [1,2..b], x > y]
+    (\ls -> sum ls / fromIntegral (length ls)) $
+    [x| x <- [1..a], y <- [1..b], x > y]
    
 
 -- | The main entry point.
