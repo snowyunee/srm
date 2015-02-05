@@ -1,9 +1,7 @@
 import Data.List
 
 sum' :: Integral a => [a] -> a
-sum' xs = foldl' (\acc x -> acc `seq` x `seq` acc + x) 0 xs
-
-length' xs = foldl' (\acc x -> acc `seq`  acc + 1) 0 xs
+sum' xs = foldl' (+) 0 xs
 
 getExceptions :: (Integral a, Fractional b) => a -> a -> b
 getExceptions a b  =
